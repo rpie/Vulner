@@ -26,6 +26,4 @@ def main():
             main()
         if cmd.lower() == 'exit':
             exit('Have a good day :)')
-        else:
-            print('Invalid Command')
 main()

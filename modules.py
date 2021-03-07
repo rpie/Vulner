@@ -22,15 +22,16 @@ def cloudssp(target):
     if 'http' not in target:
         print_error('Please enter a valid website ( https://test.com )')
         return
-    print_info('Starting module CloudSSP..')
-    print_info(f'Set target : {target}')
-    print_info(f'Testing target for vulnerable page')
+    print_info(f'Starting module CloudSSP on {target}')
 
     try:
-        req = requests.get(f'{target}//mailman/listinfo/mailman')
+        ua = useragent()
+        req = requests.get(f'{target}//mailman/listinfo/mailman', headers={"user-agent": ua})
+        print_info(f'Using : {ua}')
     except:
         print_warning('Target seems to be offline')
         return
+
     if req.status_code == 200:
         try:
             soup = BeautifulSoup(req.text, 'html.parser')
