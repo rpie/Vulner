@@ -4,13 +4,10 @@ from bs4 import BeautifulSoup
 
 def print_error(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTRED_EX}ERRO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
-
 def print_sucess(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTGREEN_EX}INFO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
-
 def print_info(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTYELLOW_EX}INFO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
-
 def print_warning(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTYELLOW_EX}WARN {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
 
