@@ -41,7 +41,3 @@ def cloudssp(target):
             print_sucess(f'Backend IP : {Fore.MAGENTA}{backend}{Fore.WHITE}')
         except:
             print_error('Target isn\'t vulnerable')
-
-def rcetest(target):
-    print_info('Starting module CloudSSP..')
-    print_info(f'Set Target : {target}')
