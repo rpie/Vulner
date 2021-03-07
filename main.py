@@ -22,8 +22,17 @@ def main():
         if 'cloudssp' in cmd.lower():
             target = cmd.split(' ')[1]
             cloudssp(target)
+
+        if 'remotedown' in cmd.lower():
+            target = cmd.split(' ')[1]
+            remotedown(target)
+
+        if 'help' in cmd.lower() or 'modules' in cmd.lower():
+            helper()
+
         if cmd.lower() == 'clear' or cmd.lower() == 'cls':
             main()
+
         if cmd.lower() == 'exit':
             exit('Have a good day :)')
 main()

@@ -1,0 +1,52 @@
+<?php
+/**
+ * @package WordPress
+ * @subpackage themename
+ */
+
+get_header(); ?>
+
+
+<div id="maincontent" class="container_12">
+
+		<div id="footer-home-widgets" class="container_12">
+			<div class="grid_4">
+				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("home-one") ) : ?><?php endif; ?>	
+			 </div>			 
+			<div class="grid_4">
+				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("home-two") ) : ?><?php endif; ?>	
+			 </div>	
+			<div class="grid_4">
+				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("home-three") ) : ?><?php endif; ?>	
+			 </div>			 
+		 </div><!-- #footer-home-widgets -->	
+		
+	</div><!-- #maincontent -->
+	
+		<div class="clear"></div>
+	
+	<div class="container_12" id="twitter">
+		<div>
+			<div id="twitter-box">
+			<span><a href="https://twitter.com/HSVHospMan">Follow us</a></span>
+				<h3>What's happening on Twitter?</h3>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Twitter") ) : ?><?php endif; ?>	
+
+		<div class="clear"></div>
+	</div>
+	
+		<div class="clear"></div>
+
+		<div id="foot-home" class="container_12">
+		<div class="grid_9">
+				
+		</div>
+			<div class="clear"></div>			
+		</div><!-- #maincontent -->
+
+<?php //get_sidebar(); ?>
+<?php get_footer(); ?>
