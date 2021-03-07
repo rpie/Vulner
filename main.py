@@ -1,5 +1,5 @@
 import requests, json, os
-from modules import cloudssp
+from modules import *
 from colorama import Fore
 
 def logo():
@@ -25,5 +25,7 @@ def main():
         if cmd.lower() == 'clear' or cmd.lower() == 'cls':
             main()
         if cmd.lower() == 'exit':
-            exit(-1)
+            exit('Have a good day :)')
+        else:
+            print('Invalid Command')
 main()

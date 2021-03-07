@@ -1,4 +1,4 @@
-import requests
+import requests, random
 from colorama import Fore
 from bs4 import BeautifulSoup
 
@@ -13,6 +13,10 @@ def print_info(a):
 
 def print_warning(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTYELLOW_EX}WARN {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
+
+def useragent():
+    arr = ["Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.0.12) Gecko/2009070611 Firefox/3.0.12 (.NET CLR 3.5.30729)","Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.464.0 Safari/534.3","Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_5_8; ja-jp) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16","Mozilla/5.0 (X11; U; FreeBSD i386; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.207.0 Safari/532.0","Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/6.0.427.0 Safari/534.1"]
+    return arr[random.randint(0,len(arr)-1)]
 
 def cloudssp(target):
     if 'http' not in target:
@@ -33,7 +37,7 @@ def cloudssp(target):
             backend = soup.find_all('a')
             backend = requests.get(f'{backend[0].get("href")}', stream=True)
             backend = backend.raw._connection.sock.getpeername()[0]
-            print_info(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} vulnerable')
+            print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} vulnerable')
             print_sucess(f'Backend IP : {Fore.MAGENTA}{backend}{Fore.WHITE}')
         except:
             print_error('Target isn\'t vulnerable')
