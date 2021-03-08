@@ -30,6 +30,10 @@ def main():
         if 'help' in cmd.lower() or 'modules' in cmd.lower():
             helper()
 
+        if 'scrape' in cmd.lower() or 'dork' in cmd.lower():
+            dork = cmd.split(' ')[1]
+            scraper(dork)
+
         if cmd.lower() == 'clear' or cmd.lower() == 'cls':
             main()
 

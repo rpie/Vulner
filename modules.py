@@ -1,6 +1,8 @@
 import requests, random
 from colorama import Fore
 from bs4 import BeautifulSoup
+from ScrapeSearchEngine.ScrapeSearchEngine import Yahoo
+
 
 def print_error(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTRED_EX}ERRO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
@@ -16,6 +18,7 @@ def helper():
 Modules : 
     {Fore.LIGHTGREEN_EX}cloudssp    {Fore.MAGENTA}-   {Fore.WHITE}CPanel vulnerability to get the host backend
     {Fore.LIGHTGREEN_EX}remotedown  {Fore.MAGENTA}-   {Fore.WHITE}Remote download vulnerability in Wordpress and NameCheap websites  
+    {Fore.LIGHTGREEN_EX}heartbleed  {Fore.MAGENTA}-   {Fore.WHITE}Allows remote attackers to obtain sensitive information from process memory
 ''')
 
 def useragent():
@@ -23,6 +26,7 @@ def useragent():
     return arr[random.randint(0,len(arr)-1)]
 
 def cloudssp(target):
+    print()
     if 'http' not in target:
         print_error('Please enter a valid website ( https://test.com )')
         return
@@ -42,11 +46,12 @@ def cloudssp(target):
             backend = requests.get(f'{backend[0].get("href")}', stream=True)
             backend = backend.raw._connection.sock.getpeername()[0]
             print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} vulnerable')
-            print_sucess(f'Backend IP : {Fore.MAGENTA}{backend}{Fore.WHITE}')
+            print_sucess(f'Backend IP : {Fore.MAGENTA}{backend}{Fore.WHITE}\n')
         except:
-            print_error('Target isn\'t vulnerable')
+            print_error('Target isn\'t vulnerable\n')
 
 def remotedown(target):
+    print()
     if 'http' not in target:
         print_error('Please enter a valid website ( https://test.com )')
         return
@@ -63,7 +68,14 @@ def remotedown(target):
     if req.status_code == 200:
         f = open('output.txt', 'w').write(req.text)
         print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} vulnerable')
-        print_sucess('Output saved to output.txt')
+        print_sucess('Output saved to output.txt\n')
 
     else:    
-        print_error('Target isn\'t vulnerable')
+        print_error('Target isn\'t vulnerable\n')
+
+def scraper(dork):
+    print()
+    results = Yahoo(dork, useragent())
+    for result in results:
+        print_sucess(result)
+    print()
