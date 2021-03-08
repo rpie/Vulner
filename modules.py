@@ -31,7 +31,6 @@ def cloudssp(target):
     try:
         ua = useragent()
         req = requests.get(f'{target}//mailman/listinfo/mailman', headers={"user-agent": ua})
-        print_info(f'Using : {ua}')
     except:
         print_warning('Target seems to be offline')
         return
