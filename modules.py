@@ -1,4 +1,4 @@
-import requests, random
+import requests, random, threading, time
 from colorama import Fore
 from bs4 import BeautifulSoup
 from ScrapeSearchEngine.ScrapeSearchEngine import Yahoo
@@ -19,6 +19,7 @@ Modules :
     {Fore.LIGHTGREEN_EX}cloudssp    {Fore.MAGENTA}-   {Fore.WHITE}CPanel vulnerability to get the host backend
     {Fore.LIGHTGREEN_EX}remotedown  {Fore.MAGENTA}-   {Fore.WHITE}Remote download vulnerability in Wordpress and NameCheap websites  
     {Fore.LIGHTGREEN_EX}heartbleed  {Fore.MAGENTA}-   {Fore.WHITE}Allows remote attackers to obtain sensitive information from process memory
+    {Fore.LIGHTGREEN_EX}dirscan     {Fore.MAGENTA}-   {Fore.WHITE}Scan dirrectors in a website from a wordlist (defaults to dirs.txt)
     {Fore.LIGHTGREEN_EX}modules     {Fore.MAGENTA}-   {Fore.WHITE}Shows this message
     {Fore.LIGHTGREEN_EX}credits     {Fore.MAGENTA}-   {Fore.WHITE}Shows the creator socials and detials about the Vulner project
 
@@ -82,3 +83,19 @@ def scraper(dork):
     for result in results:
         print_sucess(result)
     print()
+
+def requestdir(url):
+    req = requests.get(url=url, timeout=5,  headers={"user-agent": useragent()})
+    if req.status_code == 200:
+        print_sucess(f'{Fore.GREEN}{req.status_code}  -  {Fore.WHITE}{url}')
+    elif req.status_code != 404:
+        print_sucess(f'{Fore.YELLOW}{req.status_code}  -  {Fore.WHITE}{url}')
+
+def dirscan(target):
+    dirs = open('dirs.txt', 'r').readlines()
+    for content in dirs:
+        url = target+'/'+content
+        t = threading.Thread(target=requestdir, args=(url, ))
+        t.start()
+        time.sleep(2)
+        

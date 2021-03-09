@@ -34,6 +34,10 @@ def main():
             dork = cmd.split(' ')[1]
             scraper(dork)
 
+        if 'dirscan' in cmd.lower() or 'scan' in cmd.lower():
+            target = cmd.split(' ')[1]
+            dirscan(target)
+
         if cmd.lower() == 'clear' or cmd.lower() == 'cls':
             main()
 
