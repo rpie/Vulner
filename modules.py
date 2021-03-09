@@ -87,15 +87,17 @@ def scraper(dork):
 def requestdir(url):
     req = requests.get(url=url, timeout=5,  headers={"user-agent": useragent()})
     if req.status_code == 200:
-        print_sucess(f'{Fore.GREEN}{req.status_code}  -  {Fore.WHITE}{url}')
+        print_sucess(f'{Fore.GREEN}{req.status_code}{Fore.WHITE}  -  {url}')
     elif req.status_code != 404:
-        print_sucess(f'{Fore.YELLOW}{req.status_code}  -  {Fore.WHITE}{url}')
+        print_sucess(f'{Fore.YELLOW}{req.status_code}{Fore.WHITE}  -  {url}')
 
 def dirscan(target):
+    print()
     dirs = open('dirs.txt', 'r').readlines()
     for content in dirs:
+        content = content.rstrip()
         url = target+'/'+content
         t = threading.Thread(target=requestdir, args=(url, ))
         t.start()
-        time.sleep(2)
+        time.sleep(0.1)
         
