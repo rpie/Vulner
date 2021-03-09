@@ -19,6 +19,9 @@ Modules :
     {Fore.LIGHTGREEN_EX}cloudssp    {Fore.MAGENTA}-   {Fore.WHITE}CPanel vulnerability to get the host backend
     {Fore.LIGHTGREEN_EX}remotedown  {Fore.MAGENTA}-   {Fore.WHITE}Remote download vulnerability in Wordpress and NameCheap websites  
     {Fore.LIGHTGREEN_EX}heartbleed  {Fore.MAGENTA}-   {Fore.WHITE}Allows remote attackers to obtain sensitive information from process memory
+    {Fore.LIGHTGREEN_EX}modules     {Fore.MAGENTA}-   {Fore.WHITE}Shows this message
+    {Fore.LIGHTGREEN_EX}credits     {Fore.MAGENTA}-   {Fore.WHITE}Shows the creator socials and detials about the Vulner project
+
 ''')
 
 def useragent():

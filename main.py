@@ -6,8 +6,8 @@ def logo():
     return f''' {Fore.WHITE}{Fore.LIGHTBLACK_EX}          {Fore.LIGHTWHITE_EX}0{Fore.LIGHTBLACK_EX}
 {Fore.LIGHTBLACK_EX}        {Fore.LIGHTWHITE_EX}0{Fore.LIGHTBLACK_EX} __   __    _              
 {Fore.MAGENTA}   _ _/|{Fore.LIGHTBLACK_EX}  \ \ / /  _| |_ _  ___ _ _ 
-{Fore.MAGENTA}  \\ o.0/{Fore.LIGHTBLACK_EX}   \ V / || | | ' \/ -_) '_|
-{Fore.MAGENTA}   ===== {Fore.LIGHTBLACK_EX}   \_/ \_,_|_|_||_\___|_|   {Fore.LIGHTGREEN_EX}0.1{Fore.WHITE}
+{Fore.MAGENTA}  \\ o.0/{Fore.LIGHTBLACK_EX}   \ V / || | | ' \/ -_) '_|  {Fore.LIGHTGREEN_EX}Creator : {Fore.LIGHTMAGENTA_EX}HellSec{Fore.WHITE}
+{Fore.MAGENTA}   ‾‾|‾  {Fore.LIGHTBLACK_EX}   \_/ \_,_|_|_||_\___|_|    {Fore.LIGHTGREEN_EX}Version : {Fore.LIGHTMAGENTA_EX}0.1{Fore.WHITE}
 '''
 
 def clear():
