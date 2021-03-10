@@ -38,6 +38,19 @@ def main():
             target = cmd.split(' ')[1]
             dirscan(target)
 
+        if 'config' in cmd.lower() or 'scan' in cmd.lower():
+            target = cmd.split(' ')[1]
+            configdownload(target)
+
+        if 'autopwn' in cmd.lower():
+            exploits = [cloudssp, configdownload]
+            target = cmd.split(' ')[1]
+            for exploit in exploits:
+                exploit(target)
+            print_sucess('Autopwn Complete')
+            print()
+
+
         if cmd.lower() == 'clear' or cmd.lower() == 'cls':
             main()
 
