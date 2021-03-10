@@ -18,7 +18,6 @@ def main():
     print(logo())
     while True:
         cmd = input(f'{Fore.WHITE}[{Fore.MAGENTA} INPU{Fore.WHITE} ] {Fore.GREEN}~>{Fore.WHITE} ')
-
         if 'cloudssp' in cmd.lower():
             target = cmd.split(' ')[1]
             cloudssp(target)
@@ -44,9 +43,16 @@ def main():
 
         if 'autopwn' in cmd.lower():
             exploits = [cloudssp, configdownload]
-            target = cmd.split(' ')[1]
+            try:
+                target = cmd.split(' ')[1]
+            except:
+                print_warning('Please enter a target url')
+                return
             for exploit in exploits:
-                exploit(target)
+                try:
+                    exploit(target)
+                except:
+                    print_error(f'{str(exploit)} Failed')
             print_sucess('Autopwn Complete')
             print()
 

