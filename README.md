@@ -7,7 +7,6 @@ Live updated project of me coding a mass vuln / exploit scanner
 #### Linux
 ```bash
 [root@kek]# python3 install.py
-
 [root@kek]# python3 main.py --os linux
 ```
 
