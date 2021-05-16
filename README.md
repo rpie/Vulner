@@ -18,7 +18,7 @@ python3 main.py
 ### Windows
 
 ```powershell
-curl https://github.com/rpie/Vulner/archive/refs/heads/main.zip -O Vulner
+curl "https://github.com/rpie/Vulner/archive/refs/heads/main.zip" -O Vulner
 cd Vulner/
 python install.py windows
 python main.py 
