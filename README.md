@@ -8,21 +8,27 @@ Please do not use this on others websites without permission.
 
 ### Linux
 ```bash
-[root@kek]# python3 install.py
-[root@kek]# python3 main.py --os linux
+[root@kek]# git clone https://github.com/rpie/Vulner/
+[root@kek]# cd Vulner/
+[root@kek]# python3 install.py  --os linux
+[root@kek]# python3 main.py
 ```
 
 
 ### Windows
 
 ```bash
-[root@kek]# python install.py
-[root@kek]# python main.py --os linux
+[root@kek]# git clone https://github.com/rpie/Vulner/
+[root@kek]# cd Vulner/
+[root@kek]# python install.py --os windows
+[root@kek]# python main.py 
 ```
 
 
 ## Mac
 ```bash
-[root@kek]# python3 install.py
-[root@kek]# python3 main.py --os mac
+[root@kek]# git clone https://github.com/rpie/Vulner/
+[root@kek]# cd Vulner/
+[root@kek]# python3 install.py --os mac
+[root@kek]# python3 main.py
 ```
