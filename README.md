@@ -7,11 +7,11 @@ Please do not use this on others websites without permission.
 
 
 ### Linux
-```unix
+```bash
 git clone https://github.com/rpie/Vulner/
 cd Vulner/
-python3 install.py  --os linux
-python3 main.py
+python3 ./install.py  --os linux
+python3 ./main.py
 ```
 
 
@@ -29,6 +29,6 @@ python main.py
 ```bash
 git clone https://github.com/rpie/Vulner/
 cd Vulner/
-python3 install.py --os mac
-python3 main.py
+python3 ./install.py --os mac
+python3 ./main.py
 ```
