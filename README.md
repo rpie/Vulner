@@ -1,5 +1,7 @@
 # Vulner
-Live updated project of me coding a mass vuln / exploit scanner 
+Vulner is a website vulnerability scanner and auto exploiter
+You can use this tool to check the security of your or others websites.
+Please do not use this on others websites without permission.
 
 # Install
 
