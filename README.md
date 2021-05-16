@@ -7,28 +7,28 @@ Please do not use this on others websites without permission.
 
 
 ### Linux
-```bash
-[root@kek]# git clone https://github.com/rpie/Vulner/
-[root@kek]# cd Vulner/
-[root@kek]# python3 install.py  --os linux
-[root@kek]# python3 main.py
+```unix
+git clone https://github.com/rpie/Vulner/
+cd Vulner/
+python3 install.py  --os linux
+python3 main.py
 ```
 
 
 ### Windows
 
-```bash
-C:\Windows\System32> git clone https://github.com/rpie/Vulner/
-C:\Windows\System32> cd Vulner/
-C:\Windows\System32> python install.py --os windows
-C:\Windows\System32> python main.py 
+```powershell
+git clone https://github.com/rpie/Vulner/
+cd Vulner/
+python install.py --os windows
+python main.py 
 ```
 
 
 ## Mac
 ```bash
-HackMac:~ user$ git clone https://github.com/rpie/Vulner/
-HackMac:~ user$ cd Vulner/
-HackMac:~ user$ python3 install.py --os mac
-HackMac:~ user$ python3 main.py
+git clone https://github.com/rpie/Vulner/
+cd Vulner/
+python3 install.py --os mac
+python3 main.py
 ```
