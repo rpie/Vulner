@@ -7,20 +7,20 @@ Please do not use this on others websites without permission.
 
 
 ### Linux
-```bash
+```unix
 git clone https://github.com/rpie/Vulner/
 cd Vulner/
-python3 ./install.py  --os linux
-python3 ./main.py
+python3 install.py linux
+python3 main.py
 ```
 
 
 ### Windows
 
 ```powershell
-git clone https://github.com/rpie/Vulner/
+curl https://github.com/rpie/Vulner/archive/refs/heads/main.zip -O Vulner
 cd Vulner/
-python install.py --os windows
+python install.py windows
 python main.py 
 ```
 
@@ -29,6 +29,6 @@ python main.py
 ```bash
 git clone https://github.com/rpie/Vulner/
 cd Vulner/
-python3 ./install.py --os mac
-python3 ./main.py
+python3 install.py mac
+python3 main.py
 ```
