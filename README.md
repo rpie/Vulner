@@ -18,17 +18,17 @@ Please do not use this on others websites without permission.
 ### Windows
 
 ```bash
-[root@kek]# git clone https://github.com/rpie/Vulner/
-[root@kek]# cd Vulner/
-[root@kek]# python install.py --os windows
-[root@kek]# python main.py 
+C:\Windows\System32> git clone https://github.com/rpie/Vulner/
+C:\Windows\System32> cd Vulner/
+C:\Windows\System32> python install.py --os windows
+C:\Windows\System32> python main.py 
 ```
 
 
 ## Mac
 ```bash
-[root@kek]# git clone https://github.com/rpie/Vulner/
-[root@kek]# cd Vulner/
-[root@kek]# python3 install.py --os mac
-[root@kek]# python3 main.py
+HackMac:~ user$ git clone https://github.com/rpie/Vulner/
+HackMac:~ user$ cd Vulner/
+HackMac:~ user$ python3 install.py --os mac
+HackMac:~ user$ python3 main.py
 ```
