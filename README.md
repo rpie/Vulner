@@ -7,7 +7,7 @@ Please do not use this on others websites without permission.
 
 
 ### Linux
-```unix
+```bash
 git clone https://github.com/rpie/Vulner/
 cd Vulner/
 python3 install.py linux
